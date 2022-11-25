@@ -11,6 +11,7 @@ document.getElementById("authForm").addEventListener("submit", (e) => {
 
 async function loginUser(userObj) {
   try {
+    // console.log(userObj);
     // post req to login
     let response = await axios.post("http://localhost:3000/login", userObj);
     console.log(response.response.data);
