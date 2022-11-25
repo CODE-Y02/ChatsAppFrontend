@@ -76,5 +76,13 @@ input :active,
 input:focus {
   border: none;
   outline: none;
+
   border-bottom: 1px solid #f7f7ff;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
 }
