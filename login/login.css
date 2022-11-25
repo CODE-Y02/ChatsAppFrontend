@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #1c1c1c;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem;
+  /* gap: 0.5rem; */
+  font-size: 1rem;
+  background: transparent;
+  border: 1px solid lightslategray;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #f7f7ff;
+  border-bottom: 1px solid white;
+}
+
+label {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #f7f7ff;
+  /* font-weight: 600; */
+}
+.auth-heading {
+  padding: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+
+  color: white;
+  -webkit-box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+  -moz-box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+  box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+}
+
+.auth-heading p {
+  color: #f7f7ff;
+}
+
+#AuthBtn {
+  width: 50%;
+  min-width: 100px;
+
+  margin-top: 10px;
+  padding: 5px;
+  align-self: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #1c1c1c;
+  color: cadetblue;
+  border: transparent;
+
+  -webkit-box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+  -moz-box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+  box-shadow: 0px 0px 102px 15px rgba(46, 248, 255, 0.53);
+}
+
+input :active,
+input:focus {
+  border: none;
+  outline: none;
+
+  border-bottom: 1px solid #f7f7ff;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+form p {
+  text-align: center;
+  margin: 10px auto;
+  /* background-color: #f7f7ff; */
+  color: wheat;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  background-color: yellow;
+  color: red;
+}
+
+a {
+  text-decoration: none;
+  color: #f7f7ff;
+  background-color: rgba(0, 255, 255, 0.102);
+  /* opacity: 0.5; */
+}
