@@ -17,19 +17,35 @@
     <form id="authForm">
       <!-- Name -->
       <label for="name">Name</label>
-      <input type="text" id="name" />
+      <input type="text" id="name" required />
 
       <!-- phone -->
       <label for="phone">Phone</label>
-      <input type="tel" id="phone" />
+      <input type="tel" id="phone" required />
+
+      <!-- email -->
+      <label for="email">email</label>
+      <input type="tel" id="email" required />
 
       <!-- pass -->
       <label for="password">Password</label>
-      <input type="password" id="password" />
+      <input type="password" id="password" required />
 
       <!-- submit btn  -->
       <button type="submit" id="AuthBtn">Submit</button>
+
+      <!-- text -->
+      <p>Already have account ? <a href="/login">Login</a></p>
+
+      <!-- error text -->
+      <p class="hidden error" id="error-message"></p>
     </form>
   </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"
+    integrity="sha512-OdkysyYNjK4CZHgB+dkw9xQp66hZ9TLqmS2vXaBrftfyJeduVhyy1cOfoxiKdi4/bfgpco6REu6Rb+V2oVIRWg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script src="./signup.js"></script>
 </html>
