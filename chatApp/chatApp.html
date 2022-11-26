@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app</title>
+
+    <link rel="stylesheet" href="./chatApp.css" />
+  </head>
+  <body>
+    <!-- nav -->
+
+    <!-- heading -->
+    <h2 class="chats">Chats</h2>
+
+    <!-- chats box wrap -->
+    <div class="chatsWrapper">
+      <!-- heading -->
+      <!-- <div class="userNameWrap">
+        <h2>username</h2>
+      </div> -->
+
+      <div class="chatcontainer">
+        <!-- scrollable chat box  -->
+
+        <!-- send message -->
+        <div class="message send-message">
+          <h3>username</h3>
+          <p class="msg-content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+
+        <!-- Received msg  -->
+        <div class="message received-message">
+          <h3>username</h3>
+          <p class="msg-content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+
+        <!-- joined chat  -->
+        <div class="userstatus joined">user joined</div>
+
+        <!-- leaved chat -->
+        <div class="userstatus leaved">user Leaved</div>
+      </div>
+
+      <!-- msg box -->
+      <div class="msg-writing">
+        <textarea id="userMsg">
+            hello
+        </textarea>
+        <div class="mdg-send-wrap">
+          <button id="sendMsg">send</button>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"
+    integrity="sha512-OdkysyYNjK4CZHgB+dkw9xQp66hZ9TLqmS2vXaBrftfyJeduVhyy1cOfoxiKdi4/bfgpco6REu6Rb+V2oVIRWg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script src="./chatApp.js"></script>
+</html>

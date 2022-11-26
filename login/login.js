@@ -28,7 +28,7 @@ async function loginUser(userObj) {
     alert("login Successful 😎 ");
 
     // redirect to app
-    // window.location = "/chatApp/chatApp.html";
+    window.location = "/chatApp/chatApp.html";
   } catch (error) {
     console.log("err ===> \n", error.response.data);
 
