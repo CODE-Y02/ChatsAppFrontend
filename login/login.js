@@ -14,19 +14,21 @@ async function loginUser(userObj) {
     // console.log(userObj);
     // post req to login
     let response = await axios.post("http://localhost:3000/login", userObj);
-    console.log(response.response.data);
+    console.log(response);
 
     //  we receive token
-    let token;
+    let { token } = response.data;
+
+    console.log(token);
 
     // save it on local storage
-    localStorage.setItem("ChatsApp", JSON.stringify(token));
+    localStorage.setItem("ChatsAppToken", JSON.stringify(token));
 
     // success msg
     alert("login Successful 😎 ");
 
     // redirect to app
-    window.location = "/chatApp/chatApp.html";
+    // window.location = "/chatApp/chatApp.html";
   } catch (error) {
     console.log("err ===> \n", error.response.data);
 
