@@ -21,7 +21,7 @@
         <h2>username</h2>
       </div> -->
 
-      <div class="chatcontainer">
+      <div class="chatcontainer" id="chatsBoxMain">
         <!-- scrollable chat box  -->
 
         <!-- send message -->
@@ -49,9 +49,11 @@
 
       <!-- msg box -->
       <div class="msg-writing">
-        <textarea id="userMsg">
-            hello
-        </textarea>
+        <textarea
+          id="userMsg"
+          cols="20"
+          placeholder="write your message here"
+        ></textarea>
         <div class="mdg-send-wrap">
           <button id="sendMsg">send</button>
         </div>
