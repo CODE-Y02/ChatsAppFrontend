@@ -28,8 +28,59 @@ async function sendMsgToServer(message, token) {
 
     //alert
     alert(res.data.message);
+
+    //fetch all
+    fetchAllMsg(token);
   } catch (error) {
     console.log("err in send msg===>", error);
     alert(error.response.data.message);
   }
 }
+
+async function fetchAllMsg(token) {
+  try {
+    let response = await axios.get("http://localhost:3000/message/getall", {
+      headers: {
+        authorization: token,
+      },
+    });
+
+    console.log(response.data);
+
+    let chatsBoxMain = document.getElementById("chatsBoxMain");
+
+    console.log(chatsBoxMain);
+    chatsBoxMain.innerHTML = "";
+    response.data.map((eachMsg) => {
+      displayMsgOnDom(eachMsg);
+    });
+    //chatsBoxMain
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function displayMsgOnDom(messageObj) {
+  const { name, content } = messageObj;
+
+  let newMsgEle = `
+        <div class="message ${
+          name == "you" ? "send-message" : "received-message"
+        }">
+            <h3>${name}</h3>
+            <p > ${content}
+            </p>
+        </div>
+    `;
+
+  chatsBoxMain.innerHTML += newMsgEle;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  // revert unauthorized user
+  if (!token) window.location = "/login/login.html";
+
+  fetchAllMsg(token);
+});

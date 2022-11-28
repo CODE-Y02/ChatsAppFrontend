@@ -26,6 +26,7 @@ body {
   flex-direction: column;
   height: 100%;
   width: 70vw;
+  height: 80vh;
   min-width: 275px;
 
   padding: 0 0.5rem;
@@ -57,12 +58,12 @@ body {
 }
 
 .message {
-  width: 70%;
-  min-width: 270px;
+  /* width: 70%; */
+  max-width: 60%;
   padding: 0.5rem;
   border: 2px dotted white;
   margin: 0.5rem 0;
-
+  border-radius: 0.5rem;
   /* background-color: #3c096c; */
 
   -webkit-box-shadow: 0px 0px 10px 5px rgba(46, 255, 252, 0.2);
@@ -114,10 +115,14 @@ body {
 .msg-writing {
   display: flex;
   margin: 0.5rem;
+  width: 70vw;
 }
 
 #userMsg {
   width: 70%;
+  /* min-width: 255px; */
+  font-size: 1.25rem;
+  padding: 0.5rem;
 
   /* min-width: 255px; */
 }
@@ -127,6 +132,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0.5rem;
 }
 
 #sendMsg {
