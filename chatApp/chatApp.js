@@ -82,5 +82,5 @@ window.addEventListener("DOMContentLoaded", () => {
   // revert unauthorized user
   if (!token) window.location = "/login/login.html";
 
-  fetchAllMsg(token);
+  setInterval(() => fetchAllMsg(token), 1000);
 });
