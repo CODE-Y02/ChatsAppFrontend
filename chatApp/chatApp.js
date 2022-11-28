@@ -30,28 +30,44 @@ async function sendMsgToServer(message, token) {
     alert(res.data.message);
 
     //fetch all
-    fetchAllMsg(token);
+    fetchAllOrLatestMsg(token);
   } catch (error) {
     console.log("err in send msg===>", error);
     alert(error.response.data.message);
   }
 }
 
-async function fetchAllMsg(token) {
+async function fetchAllOrLatestMsg(token) {
   try {
-    let response = await axios.get("http://localhost:3000/message/getall", {
-      headers: {
-        authorization: token,
-      },
-    });
+    //check on local storage for old msg
+    let oldMsgArr = JSON.parse(localStorage.getItem("ChatsApp-Messages")) || [];
+
+    let lastMsg = oldMsgArr[oldMsgArr.length - 1];
+    let lastMsgId = -1;
+    if (lastMsg) {
+      lastMsgId = lastMsg.id;
+    }
+
+    let response = await axios.get(
+      `http://localhost:3000/message/getall?lastmessageId=${lastMsgId}`,
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
 
     console.log(response.data);
 
+    let newMessageArr = [...oldMsgArr, ...response.data];
+
+    localStorage.setItem("ChatsApp-Messages", JSON.stringify(newMessageArr));
+
     let chatsBoxMain = document.getElementById("chatsBoxMain");
 
-    console.log(chatsBoxMain);
+    // console.log(chatsBoxMain);
     chatsBoxMain.innerHTML = "";
-    response.data.map((eachMsg) => {
+    newMessageArr.map((eachMsg) => {
       displayMsgOnDom(eachMsg);
     });
     //chatsBoxMain
@@ -81,6 +97,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // revert unauthorized user
   if (!token) window.location = "/login/login.html";
-
-  setInterval(() => fetchAllMsg(token), 1000);
+  fetchAllOrLatestMsg(token);
+  // setInterval(() => fetchAllOrLatestMsg(token), 1000);
 });
