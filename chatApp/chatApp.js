@@ -61,6 +61,11 @@ async function fetchAllOrLatestMsg(token) {
 
     let newMessageArr = [...oldMsgArr, ...response.data];
 
+    if (oldMsgArr.length > 10000) {
+      // if local storage is getting full delete old msg just store new one
+      newMessageArr = response.data;
+    }
+
     localStorage.setItem("ChatsApp-Messages", JSON.stringify(newMessageArr));
 
     let chatsBoxMain = document.getElementById("chatsBoxMain");
@@ -97,6 +102,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // revert unauthorized user
   if (!token) window.location = "/login/login.html";
-  fetchAllOrLatestMsg(token);
-  // setInterval(() => fetchAllOrLatestMsg(token), 1000);
+  // fetchAllOrLatestMsg(token);
+  setInterval(() => fetchAllOrLatestMsg(token), 10000);
 });
