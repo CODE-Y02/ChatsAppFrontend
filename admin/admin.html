@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!--  add user option  -->
+      <form class="controls" id="adduserToGroup">
+        <label for="userId"> userID </label>
+        <input type="text" id="userId" required />
+
+        <label for="groups">Select Group</label>
+        <select id="groups" required>
+          <!-- <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option> -->
+        </select>
+
+        <button type="submit">Add</button>
+      </form>
+
+      <!-- create group option -->
+      <form class="controls" id="createGroup">
+        <label for="name"> Group Name </label>
+        <input type="text" id="name" required />
+
+        <button type="submit">create</button>
+      </form>
+
+      <!-- go back  -->
+      <button><a href="../chatApp/chatApp.html">Go back</a></button>
+    </div>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"
+    integrity="sha512-OdkysyYNjK4CZHgB+dkw9xQp66hZ9TLqmS2vXaBrftfyJeduVhyy1cOfoxiKdi4/bfgpco6REu6Rb+V2oVIRWg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="./admin.js"></script>
+</html>

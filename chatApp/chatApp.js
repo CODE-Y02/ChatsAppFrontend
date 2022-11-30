@@ -1,3 +1,16 @@
+window.addEventListener("DOMContentLoaded", () => {
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  // revert unauthorized user
+  // if (!token) window.location = "/login/login.html";
+  fetchAllOrLatestMsg(token);
+  fetchGroups(token);
+  setInterval(() => {
+    fetchAllOrLatestMsg(token);
+    // fetchGroups(token);
+  }, 10000);
+});
+
 document.getElementById("sendMsg").addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -97,11 +110,51 @@ function displayMsgOnDom(messageObj) {
   chatsBoxMain.innerHTML += newMsgEle;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
-
-  // revert unauthorized user
-  if (!token) window.location = "/login/login.html";
-  // fetchAllOrLatestMsg(token);
-  setInterval(() => fetchAllOrLatestMsg(token), 10000);
+// admin opt
+document.getElementById("adminOptionsBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+  //redirect to admin panel
+  window.location = "/admin/admin.html";
 });
+
+// fetch groups
+async function fetchGroups(token) {
+  try {
+    let response = await axios.get(
+      `http://localhost:3000/group/all`,
+
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+
+    console.log(response);
+
+    let groupList = document.getElementById("group-list");
+    groupList.innerHTML = "";
+
+    response.data.map((groupObj) => {
+      const groupId = groupObj.id;
+      const groupName = groupObj.name;
+
+      displayGroup(groupName, groupId);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function displayGroup(name, id) {
+  let groupList = document.getElementById("group-list");
+
+  let group = `
+                <div class="group">
+                    <h3>${name}</h3>
+                    <p class="groupId">ID = ${id}</p>
+                </div>
+  `;
+
+  groupList.innerHTML += group;
+}

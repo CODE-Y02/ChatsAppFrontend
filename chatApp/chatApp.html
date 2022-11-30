@@ -9,36 +9,89 @@
     <link rel="stylesheet" href="./chatApp.css" />
   </head>
   <body>
-    <!-- nav -->
+    <!-- controls -->
+    <div class="controls c-left">
+      <h2 class="chats">Chats</h2>
 
-    <!-- heading -->
-    <h2 class="chats">Chats</h2>
+      <!-- scrollable list -->
+      <div id="group-list">
+
+        <!-- temp start -->
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+        <div class="group">
+          <h3>gropu name</h3>
+          <p class="groupId">0012</p>
+        </div>
+
+        <!-- temp data end for scroll -->
+      </div>
+
+      
+        <button id="adminOptionsBtn">Admin Options</button>
+      
+
+      <!-- <form id="createGroupForm">
+        <label for="newGroupName">Group Name</label>
+        <input type="text" id="newGroupName" />
+        <button type="submit">Create Group</button> -->
+      </form>
+    </div>
 
     <!-- chats box wrap -->
     <div class="chatsWrapper">
-      <!-- heading -->
-      <!-- <div class="userNameWrap">
-        <h2>username</h2>
-      </div> -->
-
       <div class="chatcontainer" id="chatsBoxMain">
         <!-- scrollable chat box  -->
 
         <!-- send message -->
-        <!-- <div class="message send-message">
+        <div class="message send-message">
           <h3>username</h3>
           <p class="msg-content">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-        </div> -->
+        </div>
 
         <!-- Received msg  -->
-        <!-- <div class="message received-message">
+        <div class="message received-message">
           <h3>username</h3>
           <p class="msg-content">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-        </div> -->
+        </div>
 
         <!-- joined chat  -->
         <!-- <div class="userstatus joined">user joined</div> -->
@@ -46,14 +99,21 @@
         <!-- leaved chat -->
         <!-- <div class="userstatus leaved">user Leaved</div> -->
       </div>
+      <!-- msg box -->
+      <div class="msg-writing">
+        <textarea id="userMsg" placeholder="write your message here"></textarea>
+        <div class="mdg-send-wrap">
+          <button id="sendMsg">send</button>
+        </div>
+      </div>
     </div>
     <!-- msg box -->
-    <div class="msg-writing">
+    <!-- <div class="msg-writing">
       <textarea id="userMsg" placeholder="write your message here"></textarea>
       <div class="mdg-send-wrap">
         <button id="sendMsg">send</button>
       </div>
-    </div>
+    </div> -->
 
     <!--  -->
   </body>
