@@ -9,9 +9,16 @@ window.addEventListener("DOMContentLoaded", () => {
 document.getElementById("createGroup").addEventListener("submit", (e) => {
   e.preventDefault();
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
-  const name = document.getElementById("name").value;
+  const name = document.getElementById("name");
 
-  createGroup(name, token);
+  if (!name.value) {
+    alert("group name cannot be empty");
+    return;
+  }
+
+  createGroup(name.value, token);
+
+  name.value = "";
 });
 
 async function createGroup(name, token) {
@@ -77,13 +84,16 @@ function listEachGroup(name, id) {
 document.getElementById("adduserToGroup").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const userId = document.getElementById("userId").value;
-  const groupId = document.getElementById("groups").value;
+  const userId = document.getElementById("userId");
+  const groupId = document.getElementById("groups");
 
   console.log("\n\n\n", userId, groupId, "\n\n\n");
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
-  addnewUserToGroup(userId, groupId, token);
+  addnewUserToGroup(userId.value, groupId.value, token);
+
+  userId.value = "";
+  groupId.value = "";
 });
 
 async function addnewUserToGroup(userId, groupId, token) {
