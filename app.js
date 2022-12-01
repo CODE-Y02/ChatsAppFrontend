@@ -4,13 +4,17 @@ const path = require("path");
 
 const app = express();
 
+const cors = require("cors");
+
+app.use(cors());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 // login
 
 app.get("/", async (req, res) => {
   try {
-    res.sendFile(path.join(__dirname, "views", "login.html"));
+    res.sendFile(path.join(__dirname, "views", "signup.html"));
   } catch (error) {
     console.log(error);
   }

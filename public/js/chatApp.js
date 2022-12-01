@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
   // revert unauthorized user
-  if (!token) window.location = "/login/login.html";
+  if (!token) window.location = "/login";
   // fetchAllOrLatestMsg(token);
 
   fetchGroups(token);
@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (groupId) fetchGroupMsg(groupId);
     else fetchAllOrLatestMsg(token);
-  }, 10000);
+  }, 1000);
 });
 
 document.getElementById("sendMsg").addEventListener("click", (e) => {
@@ -115,7 +115,7 @@ function displayMsgOnDom(messageObj) {
         <div class="message ${
           name == "you" ? "send-message" : "received-message"
         }">
-            <h3>${name} <span class="userid-sm">ID ${userId}</span> </h3>
+            <h3>${name} </h3>
             
             <p > ${content}
             </p>
@@ -129,7 +129,7 @@ function displayMsgOnDom(messageObj) {
 document.getElementById("adminOptionsBtn").addEventListener("click", (e) => {
   e.preventDefault();
   //redirect to admin panel
-  window.location = "/admin/admin.html";
+  window.location = "/admin";
 });
 
 // fetch groups
@@ -227,7 +227,7 @@ async function fetchGroupMsg(id) {
     console.log(error.response.data.message);
 
     if ("invalid token" === error.response.data.message) {
-      window.location = "/login/login.html";
+      window.location = "/login";
     }
   }
 }

@@ -19,7 +19,7 @@ async function signUpUser(userObj) {
 
     alert("signup successfull 😎 ");
 
-    window.location = "/login/login.html";
+    window.location = "/login";
   } catch (error) {
     console.log("err ===> \n", error.response.data);
 
