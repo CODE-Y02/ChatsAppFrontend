@@ -73,6 +73,13 @@ body {
   background-color: #10002b;
 }
 
+.userid-sm {
+  color: gray;
+  font-size: 0.7rem;
+  margin: 0.5rem;
+
+  float: right;
+}
 .send-message {
   align-self: flex-end;
   margin-right: 0.5rem;

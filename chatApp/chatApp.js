@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (groupId) fetchGroupMsg(groupId);
     else fetchAllOrLatestMsg(token);
-  }, 1000);
+  }, 10000);
 });
 
 document.getElementById("sendMsg").addEventListener("click", (e) => {
@@ -109,13 +109,14 @@ async function fetchAllOrLatestMsg(token) {
 }
 
 function displayMsgOnDom(messageObj) {
-  const { name, content } = messageObj;
+  const { name, content, userId } = messageObj;
 
   let newMsgEle = `
         <div class="message ${
           name == "you" ? "send-message" : "received-message"
         }">
-            <h3>${name}</h3>
+            <h3>${name} <span class="userid-sm">ID ${userId}</span> </h3>
+            
             <p > ${content}
             </p>
         </div>
