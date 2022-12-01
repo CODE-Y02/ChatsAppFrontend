@@ -9,11 +9,35 @@
   </head>
   <body>
     <div class="container">
+      <!-- create group option -->
+      <form class="controls" id="createGroup">
+        <label for="name"> Group Name </label>
+        <input type="text" id="name" required />
+
+        <button type="submit">create</button>
+      </form>
+
       <!--  add user option  -->
-      <form class="controls" id="adduserToGroup">
+      <!-- <form class="controls" id="adduserToGroup">
         <label for="userId"> userID </label>
         <input type="text" id="userId" required />
 
+        <label for="groups">Select Group</label>
+        <select id="groups" required>
+          <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option>
+          <option value="groupId">groip name</option>
+        </select>
+
+        <button type="submit">Add</button>
+      </form> -->
+
+      <form>
+        <label for="userId"> Enter User Id </label>
+        <input type="text" id="userId" required />
+
+        <!-- group options -->
         <label for="groups">Select Group</label>
         <select id="groups" required>
           <!-- <option value="groupId">groip name</option>
@@ -22,15 +46,12 @@
           <option value="groupId">groip name</option> -->
         </select>
 
-        <button type="submit">Add</button>
-      </form>
-
-      <!-- create group option -->
-      <form class="controls" id="createGroup">
-        <label for="name"> Group Name </label>
-        <input type="text" id="name" required />
-
-        <button type="submit">create</button>
+        <!-- buttons  -->
+        <div class="btn admin-opt">
+          <button type="submit" id="addUser">Add User</button>
+          <button type="submit" id="makeAdmin">Make Admin</button>
+          <button type="submit" id="removeUser">Remove</button>
+        </div>
       </form>
 
       <!-- go back  -->

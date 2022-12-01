@@ -21,6 +21,22 @@ document.getElementById("createGroup").addEventListener("submit", (e) => {
   name.value = "";
 });
 
+// add user to group
+document.getElementById("addUser").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const userId = document.getElementById("userId");
+  const groupId = document.getElementById("groups");
+
+  console.log("\n\n\n", userId, groupId, "\n\n\n");
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  addnewUserToGroup(userId.value, groupId.value, token);
+
+  userId.value = "";
+  groupId.value = "";
+});
+
 async function createGroup(name, token) {
   try {
     let response = await axios.post(
@@ -80,28 +96,12 @@ function listEachGroup(name, id) {
   groupList.innerHTML += newList;
 }
 
-// add user to group
-document.getElementById("adduserToGroup").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const userId = document.getElementById("userId");
-  const groupId = document.getElementById("groups");
-
-  console.log("\n\n\n", userId, groupId, "\n\n\n");
-  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
-
-  addnewUserToGroup(userId.value, groupId.value, token);
-
-  userId.value = "";
-  groupId.value = "";
-});
-
 async function addnewUserToGroup(userId, groupId, token) {
   try {
     let response = await axios.post(
       "http://localhost:3000/group/addmember",
 
-      { userId, groupId },
+      { memberId: userId, groupId },
       {
         headers: {
           authorization: token,
@@ -116,3 +116,75 @@ async function addnewUserToGroup(userId, groupId, token) {
     console.log(error);
   }
 }
+
+//make admin
+document.getElementById("makeAdmin").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const userId = document.getElementById("userId");
+  const groupId = document.getElementById("groups");
+
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  makeUserAdmin(userId.value, groupId.value, token);
+
+  userId.value = "";
+  groupId.value = "";
+});
+
+async function makeUserAdmin(userId, groupId, token) {
+  try {
+    // assignAdmin
+
+    let response = await axios.post(
+      "http://localhost:3000/group/assignAdmin",
+
+      { memberId: userId, groupId },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+
+    console.log(response);
+
+    // alert("assigned user as admin");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// remove member
+document.getElementById("removeUser").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const userId = document.getElementById("userId");
+  const groupId = document.getElementById("groups");
+
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  removeMember(userId.value, groupId.value, token);
+
+  userId.value = "";
+  groupId.value = "";
+});
+
+async function removeMember(userId, groupId, token) {
+  try {
+    // assignAdmin
+
+    let response = await axios.delete(
+      "http://localhost:3000/group/removeMember",
+      { data: { memberId: userId, groupId }, headers: { Authorization: token } }
+    );
+
+    console.log(response);
+
+    // alert("assigned user as admin");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//s.delete(url, { data: { foo: "bar" }, headers: { "Authorization": "***" } });
