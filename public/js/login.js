@@ -13,7 +13,10 @@ async function loginUser(userObj) {
   try {
     // console.log(userObj);
     // post req to login
-    let response = await axios.post("http://localhost:3000/login", userObj);
+    let response = await axios.post(
+      "https://chatsappbackend-production.up.railway.app/login",
+      userObj
+    );
     console.log(response);
 
     //  we receive token

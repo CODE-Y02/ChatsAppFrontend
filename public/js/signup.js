@@ -13,7 +13,10 @@ document.getElementById("authForm").addEventListener("submit", (e) => {
 
 async function signUpUser(userObj) {
   try {
-    let response = await axios.post("http://localhost:3000/signup", userObj);
+    let response = await axios.post(
+      "https://chatsappbackend-production.up.railway.app/signup",
+      userObj
+    );
 
     // console.log(response);
 

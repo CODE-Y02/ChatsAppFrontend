@@ -33,7 +33,7 @@ async function sendMsgToServer(message, token) {
     let groupId = localdataObj.id;
 
     let res = await axios.post(
-      "http://localhost:3000/message/send",
+      "https://chatsappbackend-production.up.railway.app/message/send",
       {
         message: message,
         groupId,
@@ -76,7 +76,7 @@ async function fetchAllOrLatestMsg(token) {
     }
 
     let response = await axios.get(
-      `http://localhost:3000/message/getall?lastmessageId=${lastMsgId}`,
+      `https://chatsappbackend-production.up.railway.app/message/getall?lastmessageId=${lastMsgId}`,
       {
         headers: {
           authorization: token,
@@ -136,7 +136,7 @@ document.getElementById("adminOptionsBtn").addEventListener("click", (e) => {
 async function fetchGroups(token) {
   try {
     let response = await axios.get(
-      `http://localhost:3000/group/all`,
+      `https://chatsappbackend-production.up.railway.app/group/all`,
 
       {
         headers: {
@@ -194,7 +194,7 @@ async function fetchGroupMsg(id) {
     }
 
     let response = await axios.get(
-      `http://localhost:3000/message/group/${id}/?lastmessageId=${lastMsgId}`,
+      `https://chatsappbackend-production.up.railway.app/message/group/${id}/?lastmessageId=${lastMsgId}`,
       {
         headers: {
           authorization: token,

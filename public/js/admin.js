@@ -40,7 +40,7 @@ document.getElementById("addUser").addEventListener("click", (e) => {
 async function createGroup(name, token) {
   try {
     let response = await axios.post(
-      "http://localhost:3000/group/create",
+      "https://chatsappbackend-production.up.railway.app/group/create",
 
       { name },
       {
@@ -61,7 +61,7 @@ async function createGroup(name, token) {
 async function fetchGroups(token) {
   try {
     let response = await axios.get(
-      `http://localhost:3000/group/admingroups`,
+      `https://chatsappbackend-production.up.railway.app/group/admingroups`,
 
       {
         headers: {
@@ -99,7 +99,7 @@ function listEachGroup(name, id) {
 async function addnewUserToGroup(memberInfo, groupId, token) {
   try {
     let response = await axios.post(
-      "http://localhost:3000/group/addmember",
+      "https://chatsappbackend-production.up.railway.app/group/addmember",
 
       { memberInfo, groupId },
       {
@@ -137,7 +137,7 @@ async function makeUserAdmin(memberInfo, groupId, token) {
     // assignAdmin
 
     let response = await axios.post(
-      "http://localhost:3000/group/assignAdmin",
+      "https://chatsappbackend-production.up.railway.app/group/assignAdmin",
 
       { memberInfo, groupId },
       {
@@ -175,7 +175,7 @@ async function removeMember(memberInfo, groupId, token) {
     // assignAdmin
 
     let response = await axios.delete(
-      "http://localhost:3000/group/removeMember",
+      "https://chatsappbackend-production.up.railway.app/group/removeMember",
       { data: { memberInfo, groupId }, headers: { Authorization: token } }
     );
 
