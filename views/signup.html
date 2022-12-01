@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="./login.css" />
+    <link rel="stylesheet" href="css/signup.css" />
   </head>
   <body>
     <!-- heading  -->
@@ -16,12 +16,12 @@
     <!-- form  -->
     <form id="authForm">
       <!-- Name -->
-      <!-- <label for="name">Name</label>
-      <input type="text" id="name" required /> -->
+      <label for="name">Name</label>
+      <input type="text" id="name" required />
 
       <!-- phone -->
-      <!-- <label for="phone">Phone</label>
-      <input type="tel" id="phone" required /> -->
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" required />
 
       <!-- email -->
       <label for="email">Email</label>
@@ -35,10 +35,7 @@
       <button type="submit" id="AuthBtn">Submit</button>
 
       <!-- text -->
-      <p>New here ? <a href="/signup/signup.html">SignUp Now</a></p>
-
-      <!-- text -->
-      <p>Forgot Password <a href="#">Reset Here</a></p>
+      <p>Already have account ? <a href="login">Login</a></p>
 
       <!-- error text -->
       <p class="hidden error" id="error-message"></p>
@@ -50,5 +47,5 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
-  <script src="./login.js"></script>
+  <script src="js/signup.js"></script>
 </html>
