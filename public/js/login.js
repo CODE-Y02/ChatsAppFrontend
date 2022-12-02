@@ -13,7 +13,10 @@ async function loginUser(userObj) {
   try {
     // console.log(userObj);
     // post req to login
-    let response = await axios.post("http://localhost:3000/login", userObj);
+    let response = await axios.post(
+      "http://43.205.208.218:3000/login",
+      userObj
+    );
     console.log(response);
 
     //  we receive token

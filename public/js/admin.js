@@ -40,7 +40,7 @@ document.getElementById("addUser").addEventListener("click", (e) => {
 async function createGroup(name, token) {
   try {
     let response = await axios.post(
-      "http://localhost:3000/group/create",
+      "http://43.205.208.218:3000/group/create",
 
       { name },
       {
@@ -61,7 +61,7 @@ async function createGroup(name, token) {
 async function fetchGroups(token) {
   try {
     let response = await axios.get(
-      `http://localhost:3000/group/admingroups`,
+      `http://43.205.208.218:3000/group/admingroups`,
 
       {
         headers: {
@@ -99,7 +99,7 @@ function listEachGroup(name, id) {
 async function addnewUserToGroup(memberInfo, groupId, token) {
   try {
     let response = await axios.post(
-      "http://localhost:3000/group/addmember",
+      "http://43.205.208.218:3000/group/addmember",
 
       { memberInfo, groupId },
       {
@@ -137,7 +137,7 @@ async function makeUserAdmin(memberInfo, groupId, token) {
     // assignAdmin
 
     let response = await axios.post(
-      "http://localhost:3000/group/assignAdmin",
+      "http://43.205.208.218:3000/group/assignAdmin",
 
       { memberInfo, groupId },
       {
@@ -175,7 +175,7 @@ async function removeMember(memberInfo, groupId, token) {
     // assignAdmin
 
     let response = await axios.delete(
-      "http://localhost:3000/group/removeMember",
+      "http://43.205.208.218:3000/group/removeMember",
       { data: { memberInfo, groupId }, headers: { Authorization: token } }
     );
 

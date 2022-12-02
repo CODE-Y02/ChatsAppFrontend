@@ -13,7 +13,10 @@ document.getElementById("authForm").addEventListener("submit", (e) => {
 
 async function signUpUser(userObj) {
   try {
-    let response = await axios.post("http://localhost:3000/signup", userObj);
+    let response = await axios.post(
+      "http://43.205.208.218:3000/signup",
+      userObj
+    );
 
     // console.log(response);
 
