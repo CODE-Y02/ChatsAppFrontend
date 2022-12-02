@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (groupId) fetchGroupMsg(groupId);
     else fetchAllOrLatestMsg(token);
-  }, 1000);
+  }, 50000);
 });
 
 document.getElementById("sendMsg").addEventListener("click", (e) => {
