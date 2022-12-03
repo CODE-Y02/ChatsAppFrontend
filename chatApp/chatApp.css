@@ -28,7 +28,7 @@ body {
 .chatsWrapper {
   max-height: 100vh;
   width: 60vw;
-  flex: 0.7;
+  /* flex: 0.7; */
   margin: auto 1rem;
 }
 
@@ -112,24 +112,34 @@ body {
 .msg-writing {
   display: flex;
   margin: 0.5rem;
-  width: 60vw;
+  /* width: 60vw; */
+  flex-direction: column;
+  align-items: center;
 }
 
 #userMsg {
-  width: 70%;
-  /* min-width: 255px; */
+  width: 80%;
+  max-width: 100%;
   font-size: 1.25rem;
   padding: 0.5rem;
-
-  /* min-width: 255px; */
+  min-width: 189px;
 }
 
-.mdg-send-wrap {
+/* .mdg-send-wrap {
   width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
+} */
+
+#userFile {
+  margin: 0.5rem 0.5rem 0.5rem auto;
+}
+
+#sendMsg {
+  margin-left: 50%;
+  margin-right: auto;
 }
 
 #sendMsg,

@@ -2,48 +2,56 @@ window.addEventListener("DOMContentLoaded", () => {
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
   // revert unauthorized user
-  if (!token) window.location = "/login/login.html";
+  // if (!token) window.location = "/login/login.html";
   // fetchAllOrLatestMsg(token);
 
   fetchGroups(token);
-  setInterval(() => {
-    let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
+  // setInterval(() => {
+  //   let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
 
-    let groupId = localdataObj.id;
+  //   let groupId = localdataObj.id;
 
-    if (groupId) fetchGroupMsg(groupId);
-    else fetchAllOrLatestMsg(token);
-  }, 10000);
+  //   if (groupId) fetchGroupMsg(groupId);
+  //   else fetchAllOrLatestMsg(token);
+  // }, 10000);
 });
 
-document.getElementById("sendMsg").addEventListener("click", (e) => {
+document.getElementById("sendMsg").addEventListener("click", async (e) => {
   e.preventDefault();
+
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
   let message = document.getElementById("userMsg").value;
   console.log("before msg send", message);
 
-  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
-  sendMsgToServer(message, token);
+  const file = document.getElementById("userFile").files[0] || null;
+
+  let formdata = new FormData();
+
+  formdata.append("file", file);
+
+  let res = await axios.post("http://localhost:3000/message/send", formdata, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  console.log(res);
+  // sendMsgToServer(message, formdata, token);
 });
 
-async function sendMsgToServer(message, token) {
+async function sendMsgToServer(message, file, token) {
   try {
+    // console.log(token);
     let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
 
     let groupId = localdataObj.id;
 
-    let res = await axios.post(
-      "http://localhost:3000/message/send",
-      {
-        message: message,
-        groupId,
-      },
-      {
-        headers: {
-          authorization: token,
-        },
-      }
-    );
+    // let res = await axios.post("http://localhost:3000/message/send", file, {
+    //   headers: {
+    //     Authorization: token,
+    //   },
+    // });
 
     console.log(res);
     // clear input
@@ -109,15 +117,19 @@ async function fetchAllOrLatestMsg(token) {
 }
 
 function displayMsgOnDom(messageObj) {
-  const { name, content, userId } = messageObj;
+  const { name, content, fileUrl } = messageObj;
 
   let newMsgEle = `
         <div class="message ${
           name == "you" ? "send-message" : "received-message"
         }">
-            <h3>${name} <span class="userid-sm">ID ${userId}</span> </h3>
+            <h3>${name}</h3>
             
             <p > ${content}
+            </p>
+
+
+            <p > ${fileUrl}
             </p>
         </div>
     `;

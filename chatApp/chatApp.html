@@ -14,110 +14,25 @@
       <h2 class="chats">Chats</h2>
 
       <!-- scrollable list -->
-      <div id="group-list">
+      <div id="group-list"></div>
 
-        
-
-        <!-- temp start -->
-        <div class="group" onclick="fetchGroupMsg(id)">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-        <div class="group">
-          <h3>gropu name</h3>
-          <p class="groupId">0012</p>
-        </div>
-
-        <!-- temp data end for scroll -->
-      </div>
-
-      
-        <button id="adminOptionsBtn">Admin Options</button>
-      
-
-      <!-- <form id="createGroupForm">
-        <label for="newGroupName">Group Name</label>
-        <input type="text" id="newGroupName" />
-        <button type="submit">Create Group</button> -->
-      </form>
+      <button id="adminOptionsBtn">Admin Options</button>
     </div>
 
     <!-- chats box wrap -->
     <div class="chatsWrapper">
       <div class="chatcontainer" id="chatsBoxMain">
         <!-- scrollable chat box  -->
-
-        <!-- send message -->
-        <div class="message send-message">
-          <h3>username</h3>
-          <p class="msg-content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-
-        <!-- Received msg  -->
-        <div class="message received-message">
-          <h3>username</h3>
-          <p class="msg-content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-
-        <!-- joined chat  -->
-        <!-- <div class="userstatus joined">user joined</div> -->
-
-        <!-- leaved chat -->
-        <!-- <div class="userstatus leaved">user Leaved</div> -->
       </div>
+
       <!-- msg box -->
       <div class="msg-writing">
         <textarea id="userMsg" placeholder="write your message here"></textarea>
-        <div class="mdg-send-wrap">
-          <button id="sendMsg">send</button>
-        </div>
+        <input type="file" id="userFile" />
       </div>
-    </div>
-    <!-- msg box -->
-    <!-- <div class="msg-writing">
-      <textarea id="userMsg" placeholder="write your message here"></textarea>
-      <div class="mdg-send-wrap">
-        <button id="sendMsg">send</button>
-      </div>
-    </div> -->
 
-    <!--  -->
+      <button id="sendMsg">send</button>
+    </div>
   </body>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"
@@ -127,4 +42,7 @@
   ></script>
 
   <script src="./chatApp.js"></script>
+
+  <!-- temp  -->
+  <!-- <script src="./temp.js"></script> -->
 </html>
