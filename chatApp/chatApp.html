@@ -26,12 +26,16 @@
       </div>
 
       <!-- msg box -->
-      <div class="msg-writing">
-        <textarea id="userMsg" placeholder="write your message here"></textarea>
-        <input type="file" id="userFile" />
-      </div>
 
-      <button id="sendMsg">send</button>
+      <form class="msg-writing" enctype="multipart/form-data" id="msg-form">
+        <textarea
+          id="userMsg"
+          name="message"
+          placeholder="write your message here"
+        ></textarea>
+        <input type="file" name="file" id="userFile" />
+        <button id="sendMsg" type="submit">send</button>
+      </form>
     </div>
   </body>
   <script

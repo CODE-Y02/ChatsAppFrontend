@@ -16,7 +16,23 @@ window.addEventListener("DOMContentLoaded", () => {
   // }, 10000);
 });
 
-document.getElementById("sendMsg").addEventListener("click", async (e) => {
+const msgForm = document.getElementById("msg-form");
+// console.log(msgForm);
+msgForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // console.log();
+  const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
+
+  const formData = new FormData(msgForm);
+
+  console.log(formData.get("file"));
+
+  sendMsgToServer(formData, token);
+});
+
+/*
+document.getElementById("sendMsg").addEventListener("click", (e) => {
   e.preventDefault();
 
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
@@ -24,34 +40,35 @@ document.getElementById("sendMsg").addEventListener("click", async (e) => {
   let message = document.getElementById("userMsg").value;
   console.log("before msg send", message);
 
-  const file = document.getElementById("userFile").files[0] || null;
-
-  let formdata = new FormData();
-
-  formdata.append("file", file);
-
-  let res = await axios.post("http://localhost:3000/message/send", formdata, {
-    headers: {
-      Authorization: token,
-    },
-  });
-
-  console.log(res);
-  // sendMsgToServer(message, formdata, token);
+  const selectedFile = document.getElementById("userFile").files[0] || null;
+  // console.log(selectedFile);
+  sendMsgToServer(message, selectedFile, token);
 });
 
-async function sendMsgToServer(message, file, token) {
+*/
+
+async function sendMsgToServer(formData, token) {
   try {
     // console.log(token);
     let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
 
-    let groupId = localdataObj.id;
+    let groupId = localdataObj.id || null;
 
-    // let res = await axios.post("http://localhost:3000/message/send", file, {
-    //   headers: {
-    //     Authorization: token,
-    //   },
-    // });
+    if (groupId) formData.append("groupId", groupId);
+
+    let data = JSON.stringify(formData);
+
+    let res = await axios.post(
+      "http://localhost:3000/message/send",
+      // { groupId, message, formData },
+      data,
+
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     console.log(res);
     // clear input
