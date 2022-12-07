@@ -2,20 +2,21 @@ window.addEventListener("DOMContentLoaded", () => {
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
   // revert unauthorized user
-  // if (!token) window.location = "/login/login.html";
-  // fetchAllOrLatestMsg(token);
+  if (!token) window.location = "/login/login.html";
+  fetchAllOrLatestMsg(token);
 
   fetchGroups(token);
-  // setInterval(() => {
-  //   let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
+  setInterval(() => {
+    let localdataObj = JSON.parse(localStorage.getItem("ChatsApp-active-chat"));
 
-  //   let groupId = localdataObj.id;
+    let groupId = localdataObj.id;
 
-  //   if (groupId) fetchGroupMsg(groupId);
-  //   else fetchAllOrLatestMsg(token);
-  // }, 10000);
+    if (groupId) fetchGroupMsg(groupId);
+    else fetchAllOrLatestMsg(token);
+  }, 10000);
 });
 
+/*
 const msgForm = document.getElementById("msg-form");
 // console.log(msgForm);
 msgForm.addEventListener("submit", (e) => {
@@ -30,22 +31,28 @@ msgForm.addEventListener("submit", (e) => {
 
   sendMsgToServer(formData, token);
 });
+*/
 
-/*
 document.getElementById("sendMsg").addEventListener("click", (e) => {
   e.preventDefault();
 
   const token = JSON.parse(localStorage.getItem("ChatsAppToken"));
 
   let message = document.getElementById("userMsg").value;
-  console.log("before msg send", message);
+  // console.log("before msg send", message);
 
   const selectedFile = document.getElementById("userFile").files[0] || null;
   // console.log(selectedFile);
-  sendMsgToServer(message, selectedFile, token);
-});
+  // sendMsgToServer(message, selectedFile, token);
 
-*/
+  let formData = new FormData();
+
+  formData.append("message", message);
+
+  formData.append("file", selectedFile);
+
+  sendMsgToServer(formData, token);
+});
 
 async function sendMsgToServer(formData, token) {
   try {
@@ -56,19 +63,11 @@ async function sendMsgToServer(formData, token) {
 
     if (groupId) formData.append("groupId", groupId);
 
-    let data = JSON.stringify(formData);
-
-    let res = await axios.post(
-      "http://localhost:3000/message/send",
-      // { groupId, message, formData },
-      data,
-
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    let res = await axios.post("http://localhost:3000/message/send", formData, {
+      headers: {
+        Authorization: token,
+      },
+    });
 
     console.log(res);
     // clear input
@@ -82,6 +81,8 @@ async function sendMsgToServer(formData, token) {
 
     if (groupId) {
       fetchGroupMsg(groupId);
+    } else {
+      fetchAllOrLatestMsg(token);
     }
   } catch (error) {
     console.log("err in send msg===>", error);
@@ -146,8 +147,8 @@ function displayMsgOnDom(messageObj) {
             </p>
 
 
-            <p > ${fileUrl}
-            </p>
+            <a target="blank" href="${fileUrl}">${fileUrl ? "download" : ""} 
+            </a>
         </div>
     `;
 
